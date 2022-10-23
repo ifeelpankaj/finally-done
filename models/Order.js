@@ -29,7 +29,7 @@ const schema = new mongoose.Schema({
       required: true,
     },
   },
-  orderItems:
+  orderItems: [
     {
       name: {
         type: String,
@@ -47,13 +47,13 @@ const schema = new mongoose.Schema({
         type: String,
         required: true,
       },
-      
       product: {
         type: mongoose.Schema.ObjectId,
         ref: "Product",
         required: true,
       },
     },
+  ],
   
   user: {
     type: mongoose.Schema.ObjectId,

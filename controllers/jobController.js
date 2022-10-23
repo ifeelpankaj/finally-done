@@ -11,7 +11,7 @@ export const addNewJob = asyncError(async (req, res, next) => {
     const job = await Job.create(req.body)
     res.status(201).json({
         success: true,
-        jobs,
+        job,
       });
 });
 

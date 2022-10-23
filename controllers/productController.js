@@ -29,7 +29,7 @@ export const createProduct = asyncError(async (req, res, next) => {
     }
   
     req.body.images = imagesLinks;
-    const user = "req.user._id";
+    const user = req.user._id;
 
   
     const{

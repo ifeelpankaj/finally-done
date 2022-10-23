@@ -64,6 +64,7 @@ import orderRoute from "./routes/Order.js";
 import productRoute from './routes/Product.js';
 import courseRoute from './routes/Course.js';
 import jobRoute from './routes/Job.js';
+import queRoute from './routes/Qura.js';
 
 
 app.use("/acc/v1", userRoute);
@@ -71,6 +72,8 @@ app.use("/acc/v1", orderRoute);
 app.use("/acc/v1", productRoute);
 app.use("/acc/v1", courseRoute);
 app.use("/acc/v1", jobRoute);
+app.use("/acc/v1", queRoute);
+
 
 
 
