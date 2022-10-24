@@ -5,19 +5,19 @@ const router = express.Router();
 
 import { authorizeAdmin, isAuthenticated } from "../middlewares/auth.js";
 
-router.post("/createQuestion",isAuthenticated, createQuestion);
+router.post("/createQuestion",createQuestion);
 
 router.get("/Questions", getAllQuestions);
 
-router.get("/Question/:id",isAuthenticated, getQuestionDetails);
+router.get("/Question/:id", getQuestionDetails);
 
-router.delete("/Question/:id",isAuthenticated, authorizeAdmin, deleteQuestion);
+router.delete("/Question/:id", deleteQuestion);
 
-router.put("/answer",isAuthenticated, createAnswer);
+router.put("/answer", createAnswer);
 
-router.get("/getallans", isAuthenticated, getAnswer);
+router.get("/getallans",  getAnswer);
 
-router.delete("/delete",isAuthenticated,authorizeAdmin, deleteAnswer);
+router.delete("/delete",authorizeAdmin, deleteAnswer);
 
 
 
