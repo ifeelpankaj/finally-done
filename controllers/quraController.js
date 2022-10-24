@@ -5,7 +5,7 @@ import ErrorHandler from "../utils/ErrorHandler.js";
 export const createQuestion = asyncError(async (req, res, next) => {
 
    
-    const user = req.user._id;
+    const user = req.user.id;
 
   
     const{
@@ -76,7 +76,7 @@ export const createQuestion = asyncError(async (req, res, next) => {
     const {  comment, queId } = req.body;
   
     const answer = {
-      user: req.user._id,
+      user: req.user.id,
       name: req.user.name,
       comment,
     };
