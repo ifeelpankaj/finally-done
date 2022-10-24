@@ -5,7 +5,7 @@ import ErrorHandler from "../utils/ErrorHandler.js";
 export const createQuestion = asyncError(async (req, res, next) => {
 
    
-    const user = req.user._id;
+  req.body.user = req.user._id ;
 
   
     const{
@@ -13,6 +13,7 @@ export const createQuestion = asyncError(async (req, res, next) => {
         question,
         link,
         answers,
+        user ,
     }= req.body;
 
     const quraOption ={
