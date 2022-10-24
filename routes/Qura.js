@@ -5,7 +5,7 @@ const router = express.Router();
 
 import { authorizeAdmin, isAuthenticated } from "../middlewares/auth.js";
 
-router.post("/createQuestion",isAuthenticated, createQuestion);
+router.post("/createQuestion",createQuestion);
 
 router.get("/Questions", getAllQuestions);
 
