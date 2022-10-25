@@ -9,15 +9,15 @@ router.post("/createQuestion",createQuestion);
 
 router.get("/Questions", getAllQuestions);
 
-router.get("/Question/:id",isAuthenticated, getQuestionDetails);
+router.get("/Question/:id",getQuestionDetails);
 
-router.delete("/Question/:id",isAuthenticated,authorizeAdmin, deleteQuestion);
+router.delete("/Question/:id",authorizeAdmin, deleteQuestion);
 
-router.put("/answer",isAuthenticated, createAnswer);
+router.put("/answer", createAnswer);
 
-router.get("/getallans",  isAuthenticated, getAnswer);
+router.get("/getallans",   getAnswer);
 
-router.delete("/delete",authorizeAdmin, isAuthenticated, deleteAnswer);
+router.delete("/delete",authorizeAdmin, deleteAnswer);
 
 
 

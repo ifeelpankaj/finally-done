@@ -47,7 +47,7 @@ export const deleteQuestion = asyncError(async (req, res, next) => {
   const que = await Qura.findById(req.params.id);
 
   if (!que) {
-    return next(new ErrorHandler("Product not found", 404));
+    return next(new ErrorHandler("Notthing found", 404));
   }
 
   await que.remove();
