@@ -4,15 +4,14 @@ import ErrorHandler from "../utils/ErrorHandler.js";
 
 export const createQuestion = asyncError(async (req, res, next) => {
   const { title, question, link, answers } = req.body;
-  
-  const quraOption = {
+
+  const que = await Qura.create({
     title,
     question,
     link,
     answers,
-    user:req.user._id,
-  };
-  const que = await Qura.create(quraOption);
+    user: req.user._id,
+  });
   // const product = await Product.create(req.body);
 
   res.status(201).json({
