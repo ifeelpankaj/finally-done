@@ -52,26 +52,10 @@ export const updateCourse = asyncError(async (req, res, next) => {
 //Get all Content
 
 export const getAllCourse = asyncError(async (req, res, next) => {
-  const resultPerPage = 4;
-  const courseCount = await Course.countDocuments();
-
-  const apiFeature = new APIFEATURE(Course.find(), req.query)
-    .search()
-    .filter();
-
-  let courses =  apiFeature.query;
-
-  let filteredCoursesCount = courses.length;
-
-  apiFeature.pagination(resultPerPage);
-
-  courses = await apiFeature.query;
+  const courses = await Course.find();
 
   res.status(200).json({
     success: true,
     courses,
-    courseCount,
-    resultPerPage,
-    filteredCoursesCount 
   });
 });
