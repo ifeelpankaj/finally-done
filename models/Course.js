@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 const schema = new mongoose.Schema({
-  Course: {
-    title: {
-      type: String,
-      required: [true, "Please Enter  Title"],
-    },
-    courseinfo: {
+  title: {
+    type: String,
+    required: [true, "Please Enter  Title"],
+  },
+  Course: [
+    {
       subtitle: {
         type: String,
         required: [true, "Please Enter Sub Title"],
@@ -22,19 +22,17 @@ const schema = new mongoose.Schema({
         type: Date,
         default: Date.now,
       },
-    },
-    category: {
-      type: String,
-      required: [true, "Please select the subject"],
-    },
-  
-    author: {
-      type: String,
-      required: true,
-    },
-  },
+      category: {
+        type: String,
+        required: [true, "Please select the subject"],
+      },
 
-
+      author: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
 });
 
 export const Course = mongoose.model("Course", schema);
