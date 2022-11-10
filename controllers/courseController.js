@@ -59,3 +59,16 @@ export const getAllCourse = asyncError(async (req, res, next) => {
     courses,
   });
 });
+
+export const getCourseDetails = asyncError(async (req, res, next) => {
+  const course = await Course.findById(req.params.id);
+
+  if (!course) {
+    return next(new ErrorHandler("Notthing found", 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    course,
+  });
+});
