@@ -11,13 +11,13 @@ router.get("/Questions", getAllQuestions);
 
 router.get("/Question/:id",getQuestionDetails);
 
-router.delete("/Question/:id",authorizeAdmin, deleteQuestion);
+router.delete("/Question/:id", deleteQuestion);
 
 router.put("/answer", createAnswer);
 
 router.get("/getallans",   getAnswer);
 
-router.delete("/delete",authorizeAdmin, deleteAnswer);
+router.delete("/delete", deleteAnswer);
 
 
 
