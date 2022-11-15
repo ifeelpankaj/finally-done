@@ -32,31 +32,31 @@ export const createProduct = asyncError(async (req, res, next) => {
     const user = req.user._id;
 
   
-    const{
-      name,
-      description,
-      price,
-      ratings,
-      category,
-      Stock,
-      numOfReviews,
-      reviews
-    }= req.body;
+    // const{
+    //   name,
+    //   description,
+    //   price,
+    //   ratings,
+    //   category,
+    //   Stock,
+    //   numOfReviews,
+    //   reviews
+    // }= req.body;
 
-    const productOption ={
-      name,
-      description,
-      price,
-      ratings,
-      category,
-      Stock,
-      numOfReviews,
-      reviews,
-      images,
-      user
-    }
-    const product = await Product.create(productOption);
-  // const product = await Product.create(req.body);
+    // const productOption ={
+    //   name,
+    //   description,
+    //   price,
+    //   ratings,
+    //   category,
+    //   Stock,
+    //   numOfReviews,
+    //   reviews,
+    //   images,
+    //   user
+    // }
+    // const product = await Product.create(productOption);
+  const product = await Product.create(req.body);
 
     res.status(201).json({
       success: true,

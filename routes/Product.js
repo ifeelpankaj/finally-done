@@ -5,7 +5,7 @@ import { authorizeAdmin, isAuthenticated } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/createProduct", createProduct);
+router.post("/createProduct", isAuthenticated,authorizeAdmin,createProduct);
 
 router.get("/getallitems", getAllProducts);
 
