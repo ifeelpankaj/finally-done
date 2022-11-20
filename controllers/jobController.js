@@ -62,26 +62,11 @@ export const updateJobs = asyncError(async (req, res, next) => {
 });
 
 export const getAllJobs = asyncError(async (req, res, next) => {
-  const resultPerPage = 4;
-  const jobCount = await Job.countDocuments();
+  const jobs = await Job.find();
 
-  const apiFeature = new ApiFeatures(Job.find(), req.query)
-    .search()
-    .filter();
-
-  let job =  apiFeature.query;
-
-  let filteredJobsCount = job.length;
-
-  apiFeature.pagination(resultPerPage);
-
-  job = await apiFeature.query;
 
   res.status(200).json({
     success: true,
-    job,
-    jobCount,
-    resultPerPage,
-    filteredJobsCount
+    jobs,
     });
 });
