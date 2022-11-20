@@ -53,10 +53,7 @@ const schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  vacancies:{
-    type: String,
-    required: true,
-  },
+
   joblocation:{
     type: String,
     required: true,

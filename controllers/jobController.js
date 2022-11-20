@@ -15,6 +15,18 @@ export const addNewJob = asyncError(async (req, res, next) => {
       });
 });
 
+export const getJobDetails = asyncError(async (req, res, next) => {
+  const job = await Job.findById(req.params.id);
+
+  if (!job) {
+    return next(new ErrorHandler("Notthing found", 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    job,
+  });
+});
 // Delete 
 
 export const deleteJob = asyncError(async (req, res, next) => {
