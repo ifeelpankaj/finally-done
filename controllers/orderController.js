@@ -154,7 +154,7 @@ export const paymentVerification = asyncError(async (req, res, next) => {
 
     await Order.create({
       ...orderOptions,
-      user:"req.user._id",
+      user:req.user._id,
       paidAt: new Date(Date.now()),
       paymentInfo: payment._id,
     });
