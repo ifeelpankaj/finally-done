@@ -19,7 +19,7 @@ export const createProduct = asyncError(async (req, res, next) => {
   
     for (let i = 0; i < images.length; i++) {
       const result = await cloudinary.v2.uploader.upload(images[i], {
-        folder: "products",
+        folder: "products",resource_type: "auto",chunk_size: 6000000 ,
       });
   
       imagesLinks.push({
