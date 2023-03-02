@@ -8,11 +8,11 @@ const schema = new mongoose.Schema({
   },
   question: {
     type: String,
+    unique:true,
     required: [true, "Please Enter product Description"],
   },
   link: {
     type: String,
-    required: [true, "Please Enter Product Category"],
   },
   answers: [
     {

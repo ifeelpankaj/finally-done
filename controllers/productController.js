@@ -6,66 +6,66 @@ import ErrorHandler from "../utils/ErrorHandler.js";
 
 // Create Product -- Admin
 export const createProduct = asyncError(async (req, res, next) => {
+  let images = [];
 
-    let images = [];
-  
-    if (typeof req.body.images === "string") {
-      images.push(req.body.images);
-    } else {
-      images = req.body.images;
-    }
-  
-    const imagesLinks = [];
-  
-    for (let i = 0; i < images.length; i++) {
-      const result = await cloudinary.v2.uploader.upload_large(images[i], {
-        folder: "products",resource_type: "auto",chunk_size: 6000000 ,
-      });
-  
-      imagesLinks.push({
-        public_id: result.public_id,
-        url: result.secure_url,
-      });
-    }
-  
-    req.body.images = imagesLinks;
-    req.body.user = req.user._id;
+  if (typeof req.body.images === "string") {
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
+  }
 
-  
-    // const{
-    //   name,
-    //   description,
-    //   price,
-    //   ratings,
-    //   category,
-    //   Stock,
-    //   numOfReviews,
-    //   reviews
-    // }= req.body;
+  const imagesLinks = [];
 
-    // const productOption ={
-    //   name,
-    //   description,
-    //   price,
-    //   ratings,
-    //   category,
-    //   Stock,
-    //   numOfReviews,
-    //   reviews,
-    //   images,
-    //   user
-    // }
-    // const product = await Product.create(productOption);
+  for (let i = 0; i < images.length; i++) {
+    const result = await cloudinary.v2.uploader.upload_large(images[i], {
+      folder: "products",
+      resource_type: "raw",
+      raw_convert: "aspose",
+    });
+
+    imagesLinks.push({
+      public_id: result.public_id,
+      url: result.secure_url,
+    });
+  }
+
+  req.body.images = imagesLinks;
+  req.body.user = req.user._id;
+
+  // const{
+  //   name,
+  //   description,
+  //   price,
+  //   ratings,
+  //   category,
+  //   Stock,
+  //   numOfReviews,
+  //   reviews
+  // }= req.body;
+
+  // const productOption ={
+  //   name,
+  //   description,
+  //   price,
+  //   ratings,
+  //   category,
+  //   Stock,
+  //   numOfReviews,
+  //   reviews,
+  //   images,
+  //   user
+  // }
+  // const product = await Product.create(productOption);
   const product = await Product.create(req.body);
 
-    res.status(201).json({
-      success: true,
-      message: "Product Created Successfully For You",
-      product
-    });
+  res.status(201).json({
+    success: true,
+    message: "Product Created Successfully For You",
+    product,
   });
+});
 
-  // Get All Product
+// Get All Product
 
 export const getAllProducts = asyncError(async (req, res, next) => {
   const products = await Product.find({});
@@ -93,8 +93,7 @@ export const updateProduct = asyncError(async (req, res, next) => {
   let product = await Product.findById(req.params.id);
 
   if (!product) {
-    return next(new ErrorHandler
-      ("Product not found", 404));
+    return next(new ErrorHandler("Product not found", 404));
   }
 
   // Images Start Here

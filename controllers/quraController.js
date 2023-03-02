@@ -28,6 +28,17 @@ export const getAllQuestions = asyncError(async (req, res, next) => {
     success: true,
     ques,
   });
+  // const { title } = req.query;
+
+  // const query = title ? { title: { $regex: new RegExp(title, 'i') } } : {};
+
+  // const questions = await Qura.find(query);
+
+  // res.status(200).json({
+  //   success: true,
+  //   message: `${questions.length} questions found`,
+  //   questions,
+  // });
 });
 
 export const getQuestionDetails = asyncError(async (req, res, next) => {
